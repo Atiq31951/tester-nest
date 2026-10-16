@@ -1,0 +1,39 @@
+@baseUrl = http://localhost:3000/api/v1
+
+### 1. Create a new ticket
+POST {{baseUrl}}/tickets/create
+Content-Type: application/json
+
+{
+  "subject": "Internet connection issue",
+  "description": "Unable to connect to the office Wi-Fi since morning.",
+  "priority": "high"
+}
+
+### 2. Get all tickets (No filters)
+GET {{baseUrl}}/tickets
+
+### 3. Get tickets with filters (Status & Priority)
+GET {{baseUrl}}/tickets?status=open&priority=high
+
+### 4. Get tickets with pagination (Page & Limit)
+GET {{baseUrl}}/tickets?page=1&limit=5
+
+### 5. Get tickets with all query parameters combined
+GET {{baseUrl}}/tickets?status=open&priority=high&page=1&limit=10
+
+### 6. Get a single ticket by ID
+GET {{baseUrl}}/tickets/1
+
+### 7. Test Validation Error - Invalid Priority on Create
+POST {{baseUrl}}/tickets/create
+Content-Type: application/json
+
+{
+  "subject": "Test ticket",
+  "description": "This is a test description",
+  "priority": "invalid-priority"
+}
+
+### 8. Test Validation Error - Invalid Filter (Limit < 1)
+GET {{baseUrl}}/tickets?limit=0
