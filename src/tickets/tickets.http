@@ -20,7 +20,14 @@ GET {{baseUrl}}/tickets?status=open&priority=high
 GET {{baseUrl}}/tickets?page=1&limit=5
 
 ### 5. Get tickets with all query parameters combined
-GET {{baseUrl}}/tickets?status=open&priority=high&page=1&limit=10
+GET {{baseUrl}}/tickets?status=open&priority=high&page=1&limit=10&status=banana
+
+### 6. Test sorted by
+GET {{baseUrl}}/tickets?status=open&priority=high&page=1&limit=10&sortedBy=banana
+
+### 7. Test sorted by with DESC order
+GET {{baseUrl}}/tickets?status=open&priority=high&page=1&limit=10&sortedBy=desc&s
+
 
 ### 6. Get a single ticket by ID
 GET {{baseUrl}}/tickets/1
@@ -33,6 +40,16 @@ Content-Type: application/json
   "subject": "Test ticket",
   "description": "This is a test description",
   "priority": "invalid-priority"
+}
+
+### 8. Test Create with invalid values
+POST {{baseUrl}}/tickets/create
+Content-Type: application/json
+
+{
+  "subject": "Test ticket",
+  "description": "This is a test description",
+  "sama": "masa"
 }
 
 ### 8. Test Validation Error - Invalid Filter (Limit < 1)

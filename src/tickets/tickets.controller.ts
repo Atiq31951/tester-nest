@@ -14,9 +14,7 @@ export class TicketsController {
     }
 
     @Get()
-    getTickets(
-        @Query() query: FilterTicketsDto
-    ) {
+    getTickets(@Query() query: FilterTicketsDto) {
         return this.ticketsService.getTickets(query);
     }
 
